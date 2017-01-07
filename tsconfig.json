@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "lib": ["es2015"],
+        "outDir": "build"
+    },
+    "compileOnSave": true,
+    "exclude": [
+        "node_modules"
+    ]
+}

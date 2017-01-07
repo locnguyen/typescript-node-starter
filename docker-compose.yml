@@ -1,0 +1,26 @@
+version: '2'
+services:
+    platform:
+        container_name: platform
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: ["npm", "run", "dev"]
+        environment:
+            - PORT=8080
+            - LOG_LEVEL=debug
+            - DATABASE_URL=postgres://dbuser:dbpass@database:5432/starterdb
+        ports:
+            - 8080:8080
+        volumes:
+            - .:/home/app
+            - /home/app/node_modules
+    database:
+        image: postgres:9.6
+        container_name: "database"
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_PASSWORD=dbpass
+            - POSTGRES_USER=dbuser
+            - POSTGRES_DB=starterdb
