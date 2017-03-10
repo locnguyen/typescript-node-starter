@@ -12,6 +12,9 @@
     "postinstall": "typings install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "precommit": [
+    "lint"
+  ],
   "author": "Loc Nguyen, lochnguyen@gmail.com",
   "license": "MIT",
   "devDependencies": {
