@@ -28,7 +28,7 @@
     "tslint": "^4.3.1",
     "tslint-microsoft-contrib": "^4.0.0",
     "typescript": "^2.2.2",
-    "typings": "^2.1.0"
+    "typings": "^2.1.1"
   },
   "repository": "https://locnguyen@github.com/locnguyen/typescript-node-starter"
 }
