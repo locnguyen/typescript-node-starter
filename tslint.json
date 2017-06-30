@@ -139,7 +139,6 @@
     "no-unsafe-finally": true,
     "no-unused-expression": true,
     "no-unused-imports": false,
-    "no-unused-new": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-var-requires": true,
