@@ -9,10 +9,11 @@
     "dev": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
     "lint": "./node_modules/.bin/tslint -c \"tslint.json\" -e \"node_modules/**/*\"  \"./src/**/*.ts*\"",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "postinstall": "typings install",
+    "prettier": "prettier --parser typescript --single-quote --trailing-comma none --tab-width 4 --print-width 120 --write \"./**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "precommit": [
+    "prettier",
     "lint"
   ],
   "author": "Loc Nguyen, lochnguyen@gmail.com",
@@ -22,6 +23,7 @@
     "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
+    "prettier": "^1.5.3",
     "rimraf": "^2.6.1",
     "sinon": "^2.3.6",
     "ts-node": "^3.1.0",
@@ -30,5 +32,7 @@
     "typescript": "^2.4.1",
     "typings": "^2.1.1"
   },
-  "repository": "https://locnguyen@github.com/locnguyen/typescript-node-starter"
+  "repository": "https://locnguyen@github.com/locnguyen/typescript-node-starter",
+  "dependencies": {
+  }
 }
