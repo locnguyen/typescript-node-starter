@@ -19,20 +19,22 @@
   "author": "Loc Nguyen, lochnguyen@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.0.2",
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.15",
+    "@types/sinon": "^2.3.3",
+    "chai": "^4.1.0",
     "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.5.3",
     "rimraf": "^2.6.1",
-    "sinon": "^2.3.6",
-    "ts-node": "^3.1.0",
-    "tslint": "^5.4.3",
+    "sinon": "^2.3.8",
+    "ts-node": "^3.2.1",
+    "tslint": "^5.5.0",
     "tslint-microsoft-contrib": "^5.0.0",
-    "typescript": "^2.4.1",
-    "typings": "^2.1.1"
+    "typescript": "^2.4.2"
   },
   "repository": "https://locnguyen@github.com/locnguyen/typescript-node-starter",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
