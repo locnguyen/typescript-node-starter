@@ -1,7 +1,7 @@
 version: '2'
 services:
-    platform:
-        container_name: platform
+    tsapp:
+        container_name: tsapp 
         build:
             context: .
             dockerfile: Dockerfile
@@ -9,15 +9,15 @@ services:
         environment:
             - PORT=8080
             - LOG_LEVEL=debug
-            - DATABASE_URL=postgres://dbuser:dbpass@database:5432/starterdb
+            - DATABASE_URL=postgres://dbuser:dbpass@tsappdb:5432/starterdb
         ports:
             - 8080:8080
         volumes:
             - .:/home/app
             - /home/app/node_modules
-    database:
+    tsappdb:
         image: postgres:9.6
-        container_name: "database"
+        container_name: tsappdb 
         ports:
             - 5432:5432
         environment:
