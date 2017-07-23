@@ -1,14 +1,15 @@
-FROM node:wheezy
+FROM node:8.2.1-alpine
 
-MAINTAINER Loc Nguyen <loc@productionpoint.io>
+MAINTAINER Loc Nguyen <lochnguyen@gmail.com>
 
-# Install the usual Linux stuff
-RUN apt-get update &&  \
-    apt-get install -y curl g++ gcc git make sudo wget && \
-    apt-get -y autoclean
+RUN mkdir -p /home/app
+WORKDIR /home/app
 
-RUN npm install -g typescript@2.2.2 \
-    typings@2.1.1 \
-    tslint@4.2.0 \
-    ts-node \
-    nodemon
+COPY package.json /home/app
+
+RUN npm install -g -s --no-progress yarn && \
+    yarn && \
+    yarn run build && \
+    yarn cache clean
+
+COPY . /home/app
