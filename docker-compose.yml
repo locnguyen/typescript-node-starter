@@ -1,7 +1,7 @@
 version: '2'
 services:
     tsapp:
-        container_name: tsapp 
+        container_name: tsapp
         build:
             context: .
             dockerfile: Dockerfile
@@ -17,10 +17,10 @@ services:
             - /home/app/node_modules
     tsappdb:
         image: postgres:9.6
-        container_name: tsappdb 
+        container_name: tsappdb
         ports:
             - 5432:5432
         environment:
-            - POSTGRES_PASSWORD=dbpass
-            - POSTGRES_USER=dbuser
+            - POSTGRES_PASSWORD=secret
+            - POSTGRES_USER=postgres
             - POSTGRES_DB=starterdb
