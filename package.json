@@ -9,14 +9,24 @@
     "dev": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
     "lint": "./node_modules/.bin/tslint -c \"tslint.json\" -e \"node_modules/**/*\"  \"./src/**/*.ts*\"",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "prettier": "prettier --parser typescript --single-quote --trailing-comma none --tab-width 4 --print-width 120 --write \"./**/*.ts\"",
+    "prettier": "prettier  \"./src/**/*.ts\"",
+    "prettier:check": "npm run prettier -- --list-different",
+    "prettier:write": "npm run prettier -- --write",
     "report": "nyc npm run test",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers ts:ts-node/register src/**/*.test.ts"
   },
   "precommit": [
-    "prettier",
+    "precommit-msg",
+    "prettier:check",
     "lint"
   ],
+  "prettier": {
+    "parser": "typescript",
+    "tabWidth": 4,
+    "printWidth": 120,
+    "singleQuote": true,
+    "semi": true
+  },
   "author": "Loc Nguyen, lochnguyen@gmail.com",
   "license": "MIT",
   "devDependencies": {
