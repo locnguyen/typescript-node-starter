@@ -1,0 +1,35 @@
+variables:
+  DOCKER_DRIVE: overlay
+
+services:
+  - docker:dind
+
+stages:
+  - test
+  - build
+
+run_tests:
+  stage: test
+  image: node:8.9.1-alpine
+  before_script:
+    - node -v
+    - npm -v
+    - npm install -g typescript
+    - tsc -v
+    - npm install
+  script:
+    - npm run lint
+    - npm run prettier:check
+    - npm run report
+
+build_source:
+  stage: build
+  image: node:8.9.1-alpine
+  before_script:
+    - node -v
+    - npm -v
+    - npm install -g typescript
+    - tsc -v
+    - npm install
+  script:
+    - npm run build
