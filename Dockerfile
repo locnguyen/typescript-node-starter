@@ -1,6 +1,6 @@
-FROM node:8.9.1-alpine
+FROM node:8.9.1-alpine as base
 
-MAINTAINER Loc Nguyen <lochnguyen@gmail.com>
+LABEL maintainer Loc Nguyen <lochnguyen@gmail.com>
 
 # Make a directory for our app and copy package.json there
 RUN mkdir -p /home/app
@@ -29,4 +29,4 @@ COPY --from=build /home/app/build ./build
 
 
 EXPOSE 8080
-CMD ["npm", "start"]
+CMD ["node", "build"]
