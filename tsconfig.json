@@ -5,13 +5,14 @@
             "~/*": ["*"]
         },
         "module": "commonjs",
+        "moduleResolution": "node",
         "target": "es6",
         "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
-        "lib": ["es2015"],
+        "lib": ["es6"],
         "outDir": "build"
     },
     "compileOnSave": true,

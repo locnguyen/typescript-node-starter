@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import { square } from '~/modules/square';
 import { expect } from 'chai';
 
