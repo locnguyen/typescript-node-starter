@@ -49,5 +49,10 @@
     "typescript": "^2.9.1"
   },
   "repository": "https://locnguyen@github.com/locnguyen/typescript-node-starter",
-  "dependencies": {}
+  "dependencies": {
+    "module-alias": "^2.0.6"
+  },
+  "_moduleAliases": {
+    "~": "./build"
+  }
 }
