@@ -1,4 +1,4 @@
-import { square } from './index';
+import { square } from '~/modules/square';
 import { expect } from 'chai';
 
 describe('A squaring function', () => {
