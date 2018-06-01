@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf build",
-    "dev": "nodemon --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register -- ./src/index.ts",
+    "dev": "NODE_ENV=development nodemon --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register -- ./src/index.ts",
     "lint": "./node_modules/.bin/tslint -c \"tslint.json\" -e \"node_modules/**/*\"  \"./src/**/*.ts*\"",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "prettier": "prettier  \"./src/**/*.ts\"",
