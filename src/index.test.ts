@@ -1,4 +1,4 @@
-import 'module-alias/register';
+require('module-alias/register'); // tslint:disable-line
 import { square } from '~/modules/square';
 import { expect } from 'chai';
 

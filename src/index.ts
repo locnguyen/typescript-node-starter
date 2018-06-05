@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'development') {
+if (['development', 'test'].indexOf(process.env.NODE_ENV)) {
     require('module-alias/register'); // tslint:disable-line
 }
 
