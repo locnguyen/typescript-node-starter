@@ -13,7 +13,7 @@
     "prettier:check": "npm run prettier -- --list-different",
     "prettier:write": "npm run prettier -- --write",
     "report": "nyc npm run test",
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers ts:ts-node/register -r tsconfig-paths/register src/**/*.test.ts"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --require ts-node/register -r tsconfig-paths/register src/**/*.test.ts"
   },
   "precommit": [
     "precommit-msg",
