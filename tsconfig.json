@@ -12,7 +12,7 @@
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
-        "lib": ["es6"],
+        "lib": ["es2017"],
         "outDir": "build"
     },
     "compileOnSave": true,
