@@ -1,4 +1,4 @@
-FROM node:8.9.1-alpine as base
+FROM node:8-alpine as base
 
 LABEL maintainer Loc Nguyen <lochnguyen@gmail.com>
 
@@ -6,7 +6,8 @@ LABEL maintainer Loc Nguyen <lochnguyen@gmail.com>
 RUN mkdir -p /home/app
 WORKDIR /home/app
 COPY package.json /home/app
-
+COPY bootstrap.js /home/app
+COPY tsconfig.json /home/app
 
 # Build intermediate image with dependencies
 FROM base AS dependencies
@@ -29,4 +30,4 @@ COPY --from=build /home/app/build ./build
 
 
 EXPOSE 8080
-CMD ["node", "build"]
+CMD ["node", "-r", "./bootstrap.js", "build"]
