@@ -5,31 +5,43 @@ services:
   - docker:dind
 
 stages:
+  - dependencies
+  - stylecheck
   - test
   - build
 
-run_tests:
-  stage: test
-  image: node:8.9.1-alpine
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: dependencies
+  image: node:8-alpine
+  artifacts:
+    paths:
+      - node_modules/
   before_script:
     - node -v
     - npm -v
-    - npm install -g typescript
     - tsc -v
+  script:
     - npm install
+
+do_style_check:
+  stage: stylecheck
+  image: node:8-alpine
   script:
     - npm run lint
     - npm run prettier:check
+
+run_tests:
+  stage: test
+  image: node:8-alpine
+  script:
     - npm run report
 
 build_source:
   stage: build
-  image: node:8.9.1-alpine
-  before_script:
-    - node -v
-    - npm -v
-    - npm install -g typescript
-    - tsc -v
-    - npm install
+  image: node:8-alpine
   script:
     - npm run build
