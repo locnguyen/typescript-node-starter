@@ -5,8 +5,10 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        command: ["npm", "run", "dev"]
+        entrypoint: "/bin/sh"
+        command: "./dev.sh"
         environment:
+            - NODE_ENV=development
             - PORT=8080
             - LOG_LEVEL=debug
             - DATABASE_URL=postgres://dbuser:dbpass@tsappdb:5432/starterdb
