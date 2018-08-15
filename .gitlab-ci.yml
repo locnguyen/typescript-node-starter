@@ -1,5 +1,7 @@
 variables:
-  DOCKER_DRIVE: overlay
+  DOCKER_DRIVE: overlay2
+
+image: node:8-alpine
 
 services:
   - docker:dind
@@ -11,37 +13,44 @@ stages:
   - build
 
 cache:
+  key: "$CI_BUILD_REF_SLUG"
   paths:
     - node_modules/
 
 install_dependencies:
   stage: dependencies
-  image: node:8-alpine
-  artifacts:
-    paths:
-      - node_modules/
   before_script:
     - node -v
     - npm -v
-    - tsc -v
   script:
     - npm install
+  after_script:
+    - ./node_modules/.bin/tsc -v
 
-do_style_check:
+do_lint_check:
   stage: stylecheck
-  image: node:8-alpine
+  before_script:
+    - npm install
   script:
     - npm run lint
+
+do_format_check:
+  stage: stylecheck
+  before_script:
+    - npm install
+  script:
     - npm run prettier:check
 
 run_tests:
   stage: test
-  image: node:8-alpine
+  before_script:
+    - npm install
   script:
     - npm run report
 
 build_source:
   stage: build
-  image: node:8-alpine
+  before_script:
+    - npm install
   script:
     - npm run build
