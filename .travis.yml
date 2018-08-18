@@ -26,6 +26,6 @@ jobs:
     - stage: stylecheck
       script: npm run lint && npm run prettier:check
     - stage: test
-      script: npm run report
+      script: npm test
     - stage: build
       script: npm run build

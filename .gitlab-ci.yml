@@ -46,7 +46,7 @@ run_tests:
   before_script:
     - npm install
   script:
-    - npm run report
+    - npm test
 
 build_source:
   stage: build
