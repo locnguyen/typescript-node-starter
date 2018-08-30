@@ -43,6 +43,10 @@ do_format_check:
 
 run_tests:
   stage: test
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  artifacts:
+    paths:
+      - coverage/
   before_script:
     - npm install
   script:
@@ -50,6 +54,9 @@ run_tests:
 
 build_source:
   stage: build
+  artifacts:
+    paths:
+      - build/
   before_script:
     - npm install
   script:
