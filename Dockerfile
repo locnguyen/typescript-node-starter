@@ -1,4 +1,4 @@
-FROM node:8-alpine as base
+FROM node:10-alpine as base
 
 LABEL maintainer Loc Nguyen <lochnguyen@gmail.com>
 
@@ -27,7 +27,13 @@ RUN npm run build --production
 FROM base AS release
 COPY --from=dependencies /home/app/prod_node_modules ./node_modules
 COPY --from=build /home/app/build ./build
-
-
 EXPOSE 8080
 CMD ["node", "-r", "./bootstrap.js", "build"]
+
+
+# Create a development image with devDependencies
+FROM node:10-alpine as dev
+COPY --from=release /home/app /home/app
+WORKDIR /home/app
+RUN npm install
+CMD ["npm", "run", "dev"]

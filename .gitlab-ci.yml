@@ -1,14 +1,14 @@
 variables:
   DOCKER_DRIVE: overlay2
 
-image: node:8-alpine
+image: node:10-alpine
 
 services:
   - docker:dind
 
 stages:
   - dependencies
-  - stylecheck
+  - code_validation
   - test
   - compile
   - build
@@ -30,13 +30,13 @@ install_dependencies:
   after_script:
     - ./node_modules/.bin/tsc -v
 
-do_lint_check:
-  stage: stylecheck
+check_code_quality:
+  stage: code_validation
   script:
     - npm run lint
 
-do_format_check:
-  stage: stylecheck
+check_code_formatting:
+  stage: code_validation
   script:
     - npm run prettier:check
 
@@ -63,7 +63,7 @@ build_image:
   before_script:
     - docker info
   script:
-    - docker build --no-cache -t tsnodestarter:${CI_COMMIT_SHA:0:6} .
+    - docker build --no-cache --target release -t tsnodestarter:${CI_COMMIT_SHA:0:6} .
 
 container_scanning:
   stage: scanning

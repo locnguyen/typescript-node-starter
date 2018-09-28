@@ -47,3 +47,9 @@ docker-compose up
 ```
 
 See the **docker-compose.yml** file for details on this set up.
+
+### Production Image
+
+```shell
+docker build --target release -t tsnodestarter:$(git rev-parse --short=7 HEAD) .
+```
