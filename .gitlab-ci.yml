@@ -32,15 +32,11 @@ install_dependencies:
 
 do_lint_check:
   stage: stylecheck
-  before_script:
-    - npm install
   script:
     - npm run lint
 
 do_format_check:
   stage: stylecheck
-  before_script:
-    - npm install
   script:
     - npm run prettier:check
 
@@ -50,8 +46,6 @@ run_tests:
   artifacts:
     paths:
       - coverage/
-  before_script:
-    - npm install
   script:
     - npm test
 
@@ -60,8 +54,6 @@ compile_source:
   artifacts:
     paths:
       - build/
-  before_script:
-    - npm install
   script:
     - npm run build
 
