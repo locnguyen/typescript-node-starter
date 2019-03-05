@@ -8,7 +8,6 @@ services:
 
 stages:
   - dependencies
-  - code_validation
   - test
   - compile
   - build
@@ -31,12 +30,12 @@ install_dependencies:
     - ./node_modules/.bin/tsc -v
 
 check_code_quality:
-  stage: code_validation
+  stage: test
   script:
     - npm run lint
 
 check_code_formatting:
-  stage: code_validation
+  stage: test
   script:
     - npm run prettier:check
 
