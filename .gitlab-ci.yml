@@ -68,7 +68,7 @@ container_scanning:
   stage: scanning
   image: docker:latest
   variables:
-    DOCKER_DRIVER: overlay2
+    DOCKER_DRIVE: overlay2
   allow_failure: true
   services:
     - docker:dind
