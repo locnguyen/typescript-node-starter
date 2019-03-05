@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 services:
     tsapp:
         container_name: tsapp
@@ -6,8 +6,6 @@ services:
             context: .
             dockerfile: Dockerfile
             target: dev
-        entrypoint: "/bin/sh"
-        command: "./dev.sh"
         environment:
             - NODE_ENV=development
             - PORT=8080
@@ -19,7 +17,7 @@ services:
             - .:/home/app
             - /home/app/node_modules
     tsappdb:
-        image: postgres:9.6
+        image: postgres:9.6-alpine
         container_name: tsappdb
         ports:
             - 5432:5432
