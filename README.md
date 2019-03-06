@@ -1,8 +1,8 @@
 # typescript-node-starter
 
-| Travis CI | GitLab CI |
-| - | - |
-| [![Build Status](https://travis-ci.org/locnguyen/typescript-node-starter.svg?branch=master)](https://travis-ci.org/locnguyen/typescript-node-starter) | [![pipeline status](https://gitlab.com/lochnguyen/typescript-node-starter/badges/master/pipeline.svg)](https://gitlab.com/lochnguyen/typescript-node-starter/commits/master) |
+| GitLab CI |
+| - |
+| [![pipeline status](https://gitlab.com/lochnguyen/typescript-node-starter/badges/master/pipeline.svg)](https://gitlab.com/lochnguyen/typescript-node-starter/commits/master) |
 
 Barebones starter kit for server apps with TypeScript
 
@@ -43,7 +43,13 @@ $ node -r ./bootstrap.js build
 If you want to develop in a Docker container, this project along with PostgreSQL can be brought up with
 
 ```shell
-docker-compose up
+make up
+```
+
+And when you are done working
+
+```shell
+make down
 ```
 
 See the **docker-compose.yml** file for details on this set up.
