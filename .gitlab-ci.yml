@@ -9,7 +9,6 @@ services:
 stages:
   - dependencies
   - test
-  - compile
   - build
   - scanning
   - cleanup
@@ -49,7 +48,7 @@ run_tests:
     - npm test
 
 compile_source:
-  stage: compile
+  stage: build 
   artifacts:
     paths:
       - build/
