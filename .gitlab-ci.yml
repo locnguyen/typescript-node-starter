@@ -63,6 +63,9 @@ build_image:
     - docker info
   script:
     - docker build --no-cache --target release -t tsnodestarter:${CI_COMMIT_SHA:0:6} .
+    # - docker push to a registery
+  after_script:
+    - docker rmi tsnodestarter:${CI_COMMIT_SHA:0:6}
 
 container_scanning:
   stage: scanning
