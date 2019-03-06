@@ -1,21 +1,33 @@
 version: '3.7'
 services:
     tsapp:
-        container_name: tsapp
+        # Makefile fills PROJECT_NAME to current directory name.
+        # add UID to allow multiple users run this in parallel
+        container_name: ${PROJECT_NAME}_${HOST_UID:-4000}
+        hostname: ${PROJECT_NAME}
         build:
             context: .
             dockerfile: Dockerfile
             target: dev
+            args:
+                - HOST_UID=${HOST_UID:-4000}
+                - HOST_USER=${HOST_USER:-nodummy}
+                - PROJECT_NAME=${PROJECT_NAME}
         environment:
             - NODE_ENV=development
             - PORT=8080
             - LOG_LEVEL=debug
             - DATABASE_URL=postgres://dbuser:dbpass@tsappdb:5432/starterdb
+            - UID=${HOST_UID:-4000}
+        # Run with user priviliges by default.
+        user: ${HOST_USER:-nodummy}
+        image: ${PROJECT_NAME}:${HOST_USER:-nodummy}
         ports:
             - 8080:8080
         volumes:
-            - .:/home/app
-            - /home/app/node_modules
+            - ${PWD:-.}:/home/${HOST_USER}/${PROJECT_NAME}
+            # Make sure to not mount the host node_modules
+            - /home/${HOST_USER}/${PROJECT_NAME}/node_modules
     tsappdb:
         image: postgres:9.6-alpine
         container_name: tsappdb
