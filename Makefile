@@ -31,6 +31,8 @@ endif
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
 CMD_ARGUMENTS ?= $(cmd)
 
+GIT_SHA := $(shell git rev-parse --short=6 HEAD)
+
 # export such that its passed to shell functions for Docker to pick up.
 export PROJECT_NAME
 export HOST_USER
@@ -112,3 +114,11 @@ test:
 	docker-compose -p $(PROJECT_NAME)_$(HOST_UID) run --rm $(SERVICE_TARGET) sh -c '\
 		echo "I am `whoami`. My uid is `id -u`." && echo "Docker runs!"' \
 	&& echo success
+
+image:
+	docker build --no-cache --target release -t $(PROJECT_NAME):latest .
+	docker tag $(PROJECT_NAME):latest $(PROJECT_NAME):$(GIT_SHA)
+
+clean-image:
+	docker rmi $(PROJECT_NAME):latest
+	docker rmi $(PROJECT_NAME):$(GIT_SHA)
