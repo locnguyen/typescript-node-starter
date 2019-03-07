@@ -60,7 +60,7 @@ build_image:
   image: docker:latest
   before_script:
     - docker info
-    - apk update && apk add --update make
+    - apk update && apk add --update make git
   script:
     - make image 
     # - docker push to a registery
